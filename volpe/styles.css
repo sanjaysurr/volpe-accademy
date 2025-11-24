@@ -209,13 +209,7 @@ body {
     justify-content: center;
     padding: 2rem 2rem 1rem;
     position: relative;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    background-image: 
-        url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2084&q=80');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+    background-color: var(--bg-light);
     overflow: hidden;
 }
 
@@ -1239,6 +1233,60 @@ body {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+}
+
+/* Volpe Way: plain block (no background or decorative overlays) */
+.about-block.volpe-way {
+    background: transparent;
+    padding: 0; /* keep inner block spacing handled by child elements */
+    box-shadow: none;
+    border: none;
+    backdrop-filter: none;
+}
+
+.about-block.volpe-way::before,
+.about-block.volpe-way::after {
+    display: none;
+}
+
+.about-block.volpe-way .block-header {
+    margin-bottom: 1.5rem;
+}
+
+.about-block.volpe-way .block-body-grid {
+    display: grid;
+    grid-template-columns: 1fr 55%;
+    gap: 24px;
+    align-items: center;
+    padding: 2rem 0; /* restore spacing inside the block */
+}
+
+.about-block.volpe-way .block-body-image {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.about-block.volpe-way .block-body-image img {
+    width: 100%;
+    max-width: 700px;
+    height: auto;
+    display: block;
+    border-radius: 0; /* show plain PNG without rounded corners */
+    box-shadow: none; /* remove decorative shadow */
+}
+
+@media (max-width: 900px) {
+    .about-block.volpe-way .block-body-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-block.volpe-way .block-body-image {
+        order: -1;
+        margin-bottom: 12px;
+        justify-content: center;
+    }
+    .about-block.volpe-way .block-body-image img {
+        max-width: 100%;
+    }
 }
 
 .about-block::before {
@@ -2424,9 +2472,9 @@ body {
 }
 
 .it-icon-wrapper {
-    width: 90px;
-    height: 90px;
-    border-radius: 24px;
+    width: 160px;
+    height: 160px;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2449,12 +2497,20 @@ body {
 }
 
 .it-course-card:hover .it-icon-bg {
-    opacity: 0.2;
+    opacity: .2;
 }
 
 .it-course-card:hover .it-icon-wrapper {
     transform: scale(1.1) rotate(5deg);
     box-shadow: 0 20px 50px rgba(37, 99, 235, 0.3);
+}
+
+/* ensure the image inside the icon wrapper fills the larger area */
+.it-icon-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 .it-icon {
@@ -4668,8 +4724,8 @@ body {
     }
     
     .it-icon-wrapper {
-        width: 80px;
-        height: 80px;
+        width: 140px;
+        height: 140px;
         margin-bottom: 1.5rem;
     }
     
@@ -5136,8 +5192,8 @@ body {
     }
     
     .it-icon-wrapper {
-        width: 70px;
-        height: 70px;
+        width: 120px;
+        height: 120px;
         margin-bottom: 1.2rem;
     }
     
