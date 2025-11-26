@@ -68,27 +68,10 @@ body {
     cursor: pointer;
 }
 
-.logo::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
-    transition: width 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 2px;
-}
 
 
 
-.logo:hover {
-    transform: translateY(-1px);
-}
 
-.logo:hover::after {
-    width: 100%;
-}
 
 /* nav logo image (replaces text logo) */
 .nav-logo {
