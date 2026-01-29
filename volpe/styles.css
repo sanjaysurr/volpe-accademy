@@ -758,8 +758,8 @@ body {
 }
 
 .scroll-line {
-    width: 2px;
-    height: 40px;
+    width: 4px;
+    height: 60px;
     background: linear-gradient(180deg, var(--primary-color), transparent);
     animation: scrollDown 2s ease-in-out infinite;
 }
@@ -1493,132 +1493,7 @@ body {
     text-align: center;
 }
 
-.promise-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2.5rem;
-}
 
-.promise-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding: 2rem 1.5rem;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 16px;
-    border: 1px solid rgba(37, 99, 235, 0.1);
-    transition: all 0.3s ease;
-    text-align: center;
-    position: relative;
-    z-index: 1;
-    overflow: hidden;
-}
-
-.promise-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.03), rgba(255, 102, 0, 0.03));
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-}
-
-.promise-card:hover::before {
-    opacity: 1;
-}
-
-.promise-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.12);
-    border-color: rgba(37, 99, 235, 0.25);
-    background: rgba(255, 255, 255, 0.9);
-}
-
-.promise-icon {
-    font-size: 2rem;
-    width: 70px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(255, 102, 0, 0.1));
-    border-radius: 18px;
-    transition: all 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.promise-card:hover .promise-icon {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(37, 99, 235, 0.15);
-}
-
-.promise-item {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--primary-color);
-    margin: 0;
-}
-
-.block-statement {
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--text-dark);
-    margin: 2.5rem 0 0;
-    line-height: 1.8;
-    text-align: center;
-    padding: 1.5rem;
-    background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(255, 102, 0, 0.05));
-    border-radius: 12px;
-    border-left: 4px solid var(--accent-color);
-}
-
-.block-footer {
-    margin-top: 2.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid rgba(37, 99, 235, 0.1);
-    text-align: center;
-}
-
-.block-quote {
-    font-size: clamp(1rem, 1.7vw, 1.25rem);
-    font-style: italic;
-    color: var(--primary-color);
-    font-weight: 600;
-    margin: 0;
-    line-height: 1.5;
-    position: relative;
-}
-
-.block-quote::before,
-.block-quote::after {
-    content: '"';
-    font-size: 1.7rem;
-    color: var(--accent-color);
-    opacity: 0.3;
-    font-family: Georgia, serif;
-}
-
-.block-quote::before {
-    margin-right: 0.5rem;
-}
-
-.block-quote::after {
-    margin-left: 0.5rem;
-}
-
-.block-text {
-    font-size: 0.95rem;
-    line-height: 1.8;
-    color: var(--text-dark);
-    text-align: center;
-}
 
 /* Vision & Mission Section */
 .vision-mission-section {
@@ -2017,45 +1892,7 @@ body {
     margin: 0;
 }
 
-/* Edge Section */
-.edge-section {
-    padding: 6rem 2rem;
-    background-color: var(--bg-light);
-    text-align: center;
-}
 
-.edge-container {
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.edge-content {
-    max-width: 800px;
-    margin: 0 auto;
-}
-
-.edge-title {
-    font-size: clamp(1.7rem, 4vw, 2.8rem);
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 2rem;
-    letter-spacing: -0.02em;
-}
-
-.edge-description {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: var(--text-dark);
-    margin-bottom: 1rem;
-}
-
-.edge-quote {
-    font-size: 1.25rem;
-    font-style: italic;
-    color: var(--primary-color);
-    font-weight: 500;
-    margin-top: 2rem;
-}
 
 /* Courses Section */
 .courses-section {
@@ -2088,6 +1925,174 @@ body {
 .courses-section-header {
     text-align: center;
     margin-bottom: 4rem;
+}
+
+/* Program Categories (3-grid on Home) */
+.program-category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+}
+
+@media (max-width: 900px) {
+    .program-category-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.program-category-tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1.75rem 1.6rem;
+    border-radius: 22px;
+    text-decoration: none;
+    border: 1px solid rgba(15, 23, 42, 0.10);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    overflow: hidden;
+}
+
+.program-category-tile::before,
+.program-category-tile::after {
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.9;
+}
+
+.program-category-tile:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 30px 80px rgba(37, 99, 235, 0.16);
+    border-color: rgba(37, 99, 235, 0.22);
+}
+
+.program-category-kicker {
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(15, 23, 42, 0.7);
+}
+
+.program-category-title {
+    font-size: 1.35rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--text-dark);
+}
+
+.program-category-subtitle {
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: var(--text-light);
+}
+
+/* 3 different tile designs */
+.program-category-tile--hr {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.12), rgba(255, 102, 0, 0.10));
+    border-radius: 999px 28px 999px 28px; /* pill-ish */
+}
+
+.program-category-tile--hr::before {
+    width: 220px;
+    height: 220px;
+    right: -90px;
+    top: -90px;
+    background: radial-gradient(circle at 30% 30%, rgba(37, 99, 235, 0.35), transparent 60%);
+    border-radius: 999px;
+    transform: rotate(10deg);
+}
+
+.program-category-tile--fe {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(37, 99, 235, 0.18);
+    border-radius: 28px 28px 28px 6px; /* “cut” corner feel */
+}
+
+.program-category-tile--fe::before {
+    width: 64px;
+    height: 64px;
+    left: -22px;
+    bottom: -22px;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.20), rgba(37, 99, 235, 0.05));
+    transform: rotate(45deg);
+    border-radius: 18px;
+}
+
+.program-category-tile--fe::after {
+    width: 140px;
+    height: 140px;
+    right: -70px;
+    bottom: -70px;
+    border: 2px dashed rgba(37, 99, 235, 0.22);
+    border-radius: 999px;
+    opacity: 0.55;
+}
+
+.program-category-tile--dm {
+    background: linear-gradient(135deg, rgba(255, 102, 0, 0.14), rgba(37, 99, 235, 0.10));
+    border-radius: 26px 46px 22px 52px; /* blob/wavy */
+}
+
+.program-category-tile--dm::before {
+    width: 260px;
+    height: 180px;
+    left: -120px;
+    top: -90px;
+    background: radial-gradient(circle at 60% 50%, rgba(255, 102, 0, 0.35), transparent 60%);
+    border-radius: 40% 60% 55% 45% / 55% 45% 55% 45%;
+    transform: rotate(-12deg);
+}
+
+.program-category-tile--dm::after {
+    width: 220px;
+    height: 220px;
+    right: -120px;
+    bottom: -140px;
+    background: radial-gradient(circle at 30% 30%, rgba(37, 99, 235, 0.25), transparent 62%);
+    border-radius: 60% 40% 45% 55% / 40% 55% 45% 60%;
+    transform: rotate(18deg);
+    opacity: 0.75;
+}
+
+/* Optional "blinking"/highlight effects for program tiles
+   Usage examples (add to the <a>):
+   - class="program-category-tile ... tile-blink"
+   - class="program-category-tile ... tile-blink-slow"
+   - class="program-category-tile ... tile-glow"
+*/
+@keyframes tileBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.65; }
+}
+
+@keyframes tileGlow {
+    0%, 100% { box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08); transform: translateY(0); }
+    50% { box-shadow: 0 30px 90px rgba(255, 102, 0, 0.22); transform: translateY(-4px); }
+}
+
+.tile-blink {
+    animation: tileBlink 0.9s step-end infinite;
+}
+
+.tile-blink-slow {
+    animation: tileBlink 1.6s step-end infinite;
+}
+
+.tile-glow {
+    animation: tileGlow 1.6s ease-in-out infinite;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    .tile-blink,
+    .tile-blink-slow,
+    .tile-glow {
+        animation: none !important;
+    }
 }
 
 .courses-badge {
@@ -3629,6 +3634,137 @@ body {
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--text-dark);
+}
+
+.contact-value a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.contact-value a:hover {
+    text-decoration: underline;
+}
+
+/* Contact Form */
+.contact-form-wrapper {
+    margin-top: 3rem;
+    padding: 2rem;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.95));
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(37, 99, 235, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    position: relative;
+    overflow: hidden;
+}
+
+.contact-form-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+    opacity: 0.9;
+}
+
+.contact-form-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin-bottom: 0.35rem;
+    letter-spacing: -0.02em;
+}
+
+.contact-form-subtitle {
+    font-size: 0.95rem;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.contact-form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-field label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.form-field input,
+.form-field textarea {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    border-radius: 14px;
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.form-field textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+.form-field input:focus,
+.form-field textarea:focus {
+    border-color: rgba(37, 99, 235, 0.55);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+}
+
+.contact-form-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.contact-submit-btn {
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.95rem 1.25rem;
+    border-radius: 999px;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    color: white;
+    background: linear-gradient(135deg, var(--primary-color), #3b82f6);
+    box-shadow: 0 16px 35px rgba(37, 99, 235, 0.22);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.contact-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 45px rgba(37, 99, 235, 0.28);
+    filter: brightness(1.02);
+}
+
+.contact-submit-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.7;
+    transform: none;
+}
+
+.contact-form-status {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    min-height: 1.2em;
 }
 
 /* Footer */

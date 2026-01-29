@@ -371,6 +371,78 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Contact form submit
+    const contactForm = document.getElementById('contact-form');
+    const contactFormStatus = document.getElementById('contact-form-status');
+
+    // EmailJS (optional) — if you want EmailJS sending, fill these 3 values.
+    const EMAILJS_PUBLIC_KEY = 'YOUR_EMAILJS_PUBLIC_KEY';
+    const EMAILJS_SERVICE_ID = 'YOUR_EMAILJS_SERVICE_ID';
+    const EMAILJS_TEMPLATE_ID = 'YOUR_EMAILJS_TEMPLATE_ID';
+
+    // Fallback recipient (used if EmailJS is not configured)
+    const FALLBACK_RECIPIENT_EMAIL = 'goutham@mediabullsi.com';
+
+    const isEmailJsConfigured = () => {
+        const placeholders = new Set([
+            'YOUR_EMAILJS_PUBLIC_KEY',
+            'YOUR_EMAILJS_SERVICE_ID',
+            'YOUR_EMAILJS_TEMPLATE_ID'
+        ]);
+        return !placeholders.has(EMAILJS_PUBLIC_KEY) &&
+            !placeholders.has(EMAILJS_SERVICE_ID) &&
+            !placeholders.has(EMAILJS_TEMPLATE_ID);
+    };
+
+    const setFormStatus = (text) => {
+        if (contactFormStatus) contactFormStatus.textContent = text;
+    };
+
+    if (contactForm) {
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const name = (contactForm.querySelector('#cf_name')?.value || '').trim();
+            const email = (contactForm.querySelector('#cf_email')?.value || '').trim();
+            const phone = (contactForm.querySelector('#cf_phone')?.value || '').trim();
+            const message = (contactForm.querySelector('#cf_message')?.value || '').trim();
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+            if (!name || !email || !message) {
+                setFormStatus('Please fill Name, Email, and Message.');
+                return;
+            }
+
+            if (submitBtn) submitBtn.disabled = true;
+            setFormStatus('Sending...');
+
+            try {
+                const emailjsClient = window.emailjs;
+
+                if (emailjsClient && isEmailJsConfigured()) {
+                    emailjsClient.init({ publicKey: EMAILJS_PUBLIC_KEY });
+                    await emailjsClient.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm);
+                    setFormStatus('Sent! We’ll contact you soon.');
+                    contactForm.reset();
+                    return;
+                }
+
+                // Fallback: open user's mail client with prefilled email
+                const subject = encodeURIComponent(`New enquiry from ${name}`);
+                const body = encodeURIComponent(
+                    `Name: ${name}\nEmail: ${email}\nPhone: ${phone || '-'}\n\nMessage:\n${message}\n`
+                );
+                window.location.href = `mailto:${encodeURIComponent(FALLBACK_RECIPIENT_EMAIL)}?subject=${subject}&body=${body}`;
+                setFormStatus('Opening your email app…');
+            } catch (err) {
+                console.error('Contact form submit failed:', err);
+                setFormStatus('Something went wrong. Please try again.');
+            } finally {
+                if (submitBtn) submitBtn.disabled = false;
+            }
+        });
+    }
+
     // Mobile Menu Toggle
     const navLinks = document.querySelector('.nav-links');
     const hamburgerBtn = document.querySelector('.hamburger-menu');
