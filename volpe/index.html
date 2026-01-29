@@ -26,8 +26,21 @@
                 <div class="nav-links">
                     <a href="index.html">Home</a>
                     <a href="#about">About</a>
-                    <a href="#programs">Programs</a>
-                    <a href="itprograms.html">IT programs</a>
+                   <select 
+  name="program" 
+  class="fancy-select" 
+  onchange="if(this.value) window.location.href = this.value;"
+  aria-label="Choose training program"
+>
+  <option value="" disabled selected>Our Courses</option>
+  <option value="hrprograms.html">HR Programs</option>
+  <option value="frontend-development.html">Frontend Development</option>
+  <option value="digital-marketing.html">Digital Marketing</option>
+</select>
+
+<style>
+  
+</style>
                     <a href="#contact" class="nav-cta">Get Started</a>
                 </div>
             </div>

@@ -206,7 +206,79 @@ body {
 .hamburger-menu {
     display: none;
 }
+.fancy-select {
+    /* Reset default look */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 
+    /* Layout & spacing */
+    min-width: 260px;
+    max-width: 100%;
+    padding: 12px 44px 12px 16px;
+    font-size: 15px;
+    line-height: 1.5;
+
+    /* Colors & typography */
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-weight: 500;
+    color: #111827;               /* dark gray */
+    background-color: #ffffff;
+
+    /* Custom arrow */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    background-size: 16px;
+
+    /* Border & subtle base */
+    border: 1px solid #d1d5db;    /* light gray */
+    border-radius: 8px;
+
+    /* NO box-shadow by default */
+    box-shadow: none;
+    cursor: pointer;
+
+    /* Smooth transitions — only border & bg */
+    transition: 
+      border-color 0.15s ease,
+      background-color 0.15s ease,
+      transform 0.12s ease;
+  }
+
+  /* ─── Hover ─── only border + very light bg lift ─── NO shadow/popup feel */
+  .fancy-select:hover {
+    border-color: #9ca3af;        /* medium gray */
+    background-color: #f9fafb;    /* very subtle off-white */
+    transform: translateY(-1px);  /* tiny lift — optional, remove if you don't like */
+  }
+
+  /* ─── Focus / Opened ─── clean blue ring, still NO heavy shadow */
+  .fancy-select:focus {
+    outline: none;
+    border-color: #3b82f6;        /* blue */
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);  /* very soft glow – almost invisible */
+    background-color: #ffffff;
+  }
+
+  /* Placeholder look when nothing selected */
+  .fancy-select:invalid {
+    color: #6b7280;               /* gray */
+  }
+
+  /* Optional: make arrow darker on hover/focus */
+  .fancy-select:hover,
+  .fancy-select:focus {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234b5563' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  }
+
+  /* Mobile touch-friendly */
+  @media (max-width: 480px) {
+    .fancy-select {
+      padding: 14px 48px 14px 18px;
+      font-size: 15.5px;
+    }
+  }
 /* Hero Section */
 .hero {
     min-height: 100vh;
